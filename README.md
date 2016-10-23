@@ -1,4 +1,4 @@
-Merge 2 documents into one creating a new document.
+Merge 2 documents into a new document.
 Works in Node.js and a terminal.
 
 # Node.js Usage
