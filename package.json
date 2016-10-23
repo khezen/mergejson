@@ -1,5 +1,5 @@
 {
-  "name": "merge-json-document",
+  "name": "merge-json-documents",
   "version": "1.0.0",
   "description": "merge json documents",
   "main": "index.js",
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Khezen/merge-json-document.git"
+    "url": "git+https://github.com/Khezen/merge-json-documents.git"
   },
   "author": "Guillaume Simonneau",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Khezen/merge-json-document/issues"
+    "url": "https://github.com/Khezen/merge-json-documents/issues"
   },
-  "homepage": "https://github.com/Khezen/merge-json-document#readme"
+  "homepage": "https://github.com/Khezen/merge-json-documents#readme"
 }
