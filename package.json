@@ -1,0 +1,19 @@
+{
+  "name": "json-merge",
+  "version": "1.0.0",
+  "description": "merge json documents",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khezen/json-merge.git"
+  },
+  "author": "Guillaume Simonneau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Khezen/json-merge/issues"
+  },
+  "homepage": "https://github.com/Khezen/json-merge#readme"
+}
