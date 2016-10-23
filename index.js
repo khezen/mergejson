@@ -1,6 +1,20 @@
 "use strict";
 
+ function handleInput(input){
+     if(!(input instanceof Object) && !(input instanceof String) ){
+         throw new Error("arguments has to be strings or objects");
+     }
+    if(input instanceof String){
+        input = JSON.parse(input);
+    }
+    return input;
+}
+
 function merge(dominant, recessive){
+    
+    dominant = handleInput(dominant);
+    recessive= handleInput(recessive);
+
     var merged = {};
     var prop = null;
     for (prop in dominant){
