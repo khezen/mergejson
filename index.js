@@ -1,6 +1,7 @@
 "use strict";
+var fs = require('fs');
 
- function handleInput(input){
+function handleInput(input){
      if(!(input instanceof Object) && !(input instanceof String) ){
          throw new Error("arguments has to be strings or objects");
      }
@@ -13,7 +14,7 @@
 function merge(dominant, recessive){
     
     dominant = handleInput(dominant);
-    recessive= handleInput(recessive);
+    recessive = handleInput(recessive);
 
     var merged = {};
     var prop = null;
@@ -35,7 +36,19 @@ function merge(dominant, recessive){
 }
 
 if(process.argv[2] && process.argv[3]){
-    merge(process.argv[2], process.argv[3]);
+    fs.readFile(process.argv[2], 'utf8', function (err, dominant) {
+        if (err) {
+            throw err;
+        }else{
+            fs.readFile(process.argv[3], 'utf8', function (err, recessive) {
+                if (err) {
+                    throw err;
+                }else{
+                    console.log(merge(dominant, recessive));
+                }
+            });
+        }
+    });
 }
 
 module.exports = merge;

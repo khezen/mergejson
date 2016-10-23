@@ -1,6 +1,6 @@
 {
   "name": "merge-json-documents",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "merge json documents",
   "main": "index.js",
   "scripts": {
