@@ -1,5 +1,6 @@
 "use strict";
 var fs = require('fs');
+var deepcopy = require('deepcopy');
 
 function handleInput(input){
      if(!(input instanceof Object) && !(input instanceof String) ){
@@ -34,14 +35,17 @@ function merge(dominant, recessive){
 }
 
 function mergejson(){
-    var merged = arguments[0];
-    for (var i=1; i < arguments.length; i++){
-        var dominant = merged;
-        var recessive = arguments[i];
+    var args = arguments;
+    if(args[0] instanceof Array){
+        args = args[0];
+    }
+    var merged = args[0];
+    for (var i=1; i < args.length; i++){
+        var dominant = deepcopy(merged);
+        var recessive = args[i];
         merged = merge(dominant, recessive);
     }
     return merged;
 }
-
 
 module.exports = mergejson;
