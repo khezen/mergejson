@@ -39,7 +39,7 @@ var two = {
     '2': 'world',
     '4':{
         '4.1': 'jhon',
-        '4.2': 'lennon'
+        '4.2': 'lennon',
         '4.3': 'from two'
     }
 }
@@ -48,7 +48,7 @@ var three = {
     '3': '!',
     '4':{
         '4.1': 'jhon',
-        '4.2': 'lennon'
+        '4.2': 'lennon',
         '4.3': 'from three'
     }
 }
