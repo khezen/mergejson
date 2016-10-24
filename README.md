@@ -4,11 +4,11 @@ Works in Node.js and a terminal.
 # Node.js Usage
 
 ```
-npm install merge-json-documents --save
+npm install mergejson --save
 ```
 
 ```
-var merge = require('merge-json-documents')
+var merge = require('mergejson')
 
 var dominant = {
     '1':'hello',
@@ -33,8 +33,8 @@ console.log(merge(dominant, recessive));
 # Terminal Usage
 
 ```
-npm install -g merge-json-documents
+npm install -g mergejson
 ```
 ```
-merge-json-documents path/to/dominant.json path/to/recessive.json
+mergejson path/to/dominant.json path/to/recessive.json
 ```
