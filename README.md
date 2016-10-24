@@ -1,5 +1,4 @@
 Merge 2 documents into a new document.
-Works in Node.js and a terminal.
 
 # Node.js Usage
 
@@ -8,7 +7,7 @@ npm install mergejson --save
 ```
 
 ```
-var merge = require('mergejson')
+var mergejson = require('mergejson')
 
 var dominant = {
     '1':'hello',
@@ -25,16 +24,36 @@ var recessive = {
     }
 }
 
-console.log(merge(dominant, recessive));
+console.log(mergejson(dominant, recessive));
 // -> {'1': 'hello', '2': 'world', '3': {'3.1': 'jhon', '3.2': 'doe'}} 
 
-```
 
-# Terminal Usage
+var one = {
+    '1':'hello',
+    '4':{
+        '4.1': 'jhon',
+        '4.2': 'doe'
+    }
+}
+var two = {
+    '2': 'world',
+    '4':{
+        '4.1': 'jhon',
+        '4.2': 'lennon'
+        '4.3': 'from two'
+    }
+}
 
-```
-npm install -g mergejson
-```
-```
-mergejson path/to/dominant.json path/to/recessive.json
+var three = {
+    '3': '!',
+    '4':{
+        '4.1': 'jhon',
+        '4.2': 'lennon'
+        '4.3': 'from three'
+    }
+}
+
+console.log(mergejson(one, two, three));
+// -> {'1': 'hello', '2': 'world', '3': '!', '4': {'4.1': 'jhon', '4.2': 'doe', '4.3': 'from two'}} 
+
 ```

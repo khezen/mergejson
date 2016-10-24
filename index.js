@@ -12,10 +12,8 @@ function handleInput(input){
 }
 
 function merge(dominant, recessive){
-    
     dominant = handleInput(dominant);
     recessive = handleInput(recessive);
-
     var merged = {};
     var prop = null;
     for (prop in dominant){
@@ -35,20 +33,15 @@ function merge(dominant, recessive){
     return merged;
 }
 
-if(process.argv[2] && process.argv[3]){
-    fs.readFile(process.argv[2], 'utf8', function (err, dominant) {
-        if (err) {
-            throw err;
-        }else{
-            fs.readFile(process.argv[3], 'utf8', function (err, recessive) {
-                if (err) {
-                    throw err;
-                }else{
-                    console.log(merge(dominant, recessive));
-                }
-            });
-        }
-    });
+function mergejson(){
+    var merged = arguments[0];
+    for (var i=1; i < arguments.length; i++){
+        var dominant = merged;
+        var recessive = arguments[i];
+        merged = merge(dominant, recessive);
+    }
+    return merged;
 }
 
-module.exports = merge;
+
+module.exports = mergejson;
