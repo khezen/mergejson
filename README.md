@@ -56,4 +56,7 @@ var three = {
 console.log(mergejson(one, two, three));
 // -> {'1': 'hello', '2': 'world', '3': '!', '4': {'4.1': 'jhon', '4.2': 'doe', '4.3': 'from two'}} 
 
+console.log(mergejson([one, two, three]));
+// -> {'1': 'hello', '2': 'world', '3': '!', '4': {'4.1': 'jhon', '4.2': 'doe', '4.3': 'from two'}} 
+
 ```
