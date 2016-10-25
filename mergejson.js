@@ -48,11 +48,4 @@ function mergejson(){
     return merged;
 }
 
-var mainFile = process.argv[1].split('/');
-mainFile = mainFile[mainFile.length - 1];
-if(mainFile === "mergejson.js"){
-    var args = process.argv.slice(2);
-    console.log(mergejson(args));
-}
-
 module.exports = mergejson;

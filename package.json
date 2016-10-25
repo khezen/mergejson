@@ -1,11 +1,14 @@
 {
   "name": "mergejson",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "merge json documents",
   "main": "index.js",
   "scripts": {
     "start": "node mergejson.js",
     "test": "node ./test/test.js"
+  },
+  "bin":{
+    "mergejson": "./cmd.js"
   },
   "repository": {
     "type": "git",
