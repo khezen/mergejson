@@ -1,8 +1,8 @@
 {
   "name": "mergejson",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "merge json documents",
-  "main": "index.js",
+  "main": "mergejson.js",
   "scripts": {
     "start": "node mergejson.js",
     "test": "node ./test/test.js"
