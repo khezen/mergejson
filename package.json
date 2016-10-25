@@ -1,6 +1,6 @@
 {
   "name": "mergejson",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "merge json documents",
   "main": "mergejson.js",
   "scripts": {

@@ -23,4 +23,6 @@ var three = {
         '4.3': 'from three'
     }
 };
+//mergejson([one, two, three])
 console.log(mergejson(one, two, three));
+console.log(mergejson([one, two, three]));

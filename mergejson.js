@@ -22,7 +22,7 @@ function merge(dominant, recessive){
                 merged[prop] = merge(dominant[prop], recessive[prop]);
             }else{
                 merged[prop] = dominant[prop];
-            }    
+            }
         }
     }
     for (prop in recessive){
