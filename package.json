@@ -1,7 +1,7 @@
 {
   "name": "mergejson",
-  "version": "1.0.12",
-  "description": "merge json documents",
+  "version": "1.0.13",
+  "description": "Recursively merge json documents in a new one",
   "main": "mergejson.js",
   "scripts": {
     "start": "node mergejson.js",
