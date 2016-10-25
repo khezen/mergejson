@@ -1,12 +1,11 @@
 "use strict";
-var fs = require('fs');
 var deepcopy = require('deepcopy');
 
 function handleInput(input){
-     if(!(input instanceof Object) && !(input instanceof String) ){
+     if(typeof input !== "object" && typeof input !== "string" ){
          throw new Error("arguments has to be strings or objects");
      }
-    if(input instanceof String){
+    if(typeof input == "string"){
         input = JSON.parse(input);
     }
     return input;
@@ -27,8 +26,10 @@ function merge(dominant, recessive){
         }
     }
     for (prop in recessive){
-        if(!dominant[prop]){
-            merged[prop] = recessive[prop];
+        if(recessive.hasOwnProperty(prop)){
+            if(!dominant[prop]){
+                merged[prop] = deepcopy(recessive[prop]);
+            }
         }
     }
     return merged;
@@ -39,13 +40,19 @@ function mergejson(){
     if(args[0] instanceof Array){
         args = args[0];
     }
-    var merged = args[0];
+    var merged = deepcopy(args[0]);
     for (var i=1; i < args.length; i++){
-        var dominant = deepcopy(merged);
-        var recessive = args[i];
-        merged = merge(dominant, recessive);
+        var recessive = deepcopy(args[i]);
+        merged = merge(merged, recessive);
     }
     return merged;
+}
+
+var mainFile = process.argv[1].split('/');
+mainFile = mainFile[mainFile.length - 1];
+if(mainFile === "mergejson.js"){
+    var args = process.argv.slice(2);
+    console.log(mergejson(args));
 }
 
 module.exports = mergejson;

@@ -60,3 +60,28 @@ console.log(mergejson([one, two, three]));
 // -> {'1': 'hello', '2': 'world', '3': '!', '4': {'4.1': 'jhon', '4.2': 'doe', '4.3': 'from two'}} 
 
 ```
+
+# Terminal Usage
+ ```
+ npm install -g mergejson
+ ```
+ ```
+ mergejson {\"1\":\"one\"} {\"2\":\"two\"} {\"3\":\"three\"}
+# ->
+# {
+#   '1': 'one',
+#   '2': 'two',
+#   '3': 'three'
+# }
+ 
+ ```
+ ```
+ mergejson $(cat path/to/one.json) $(cat path/to/two.json) $(cat path/to/three.json)
+# ->
+# {
+#   '1': 'one',
+#   '2': 'two',
+#   '3': 'three'
+# }
+ 
+ ```
