@@ -68,6 +68,7 @@ console.log(mergejson([one, two, three]));
  ```
  mergejson {\"1\":\"one\"} {\"2\":\"two\"} {\"3\":\"three\"}
 # ->
+#
 # {
 #   '1': 'one',
 #   '2': 'two',
@@ -76,8 +77,9 @@ console.log(mergejson([one, two, three]));
  
  ```
  ```
- mergejson $(cat path/to/one.json) $(cat path/to/two.json) $(cat path/to/three.json)
+ mergejson $(cat one.json) $(cat two.json) $(cat three.json)
 # ->
+#
 # {
 #   '1': 'one',
 #   '2': 'two',
