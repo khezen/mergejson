@@ -1,3 +1,6 @@
+[![NPM Version](http://img.shields.io/npm/v/mergejson.svg?style=flat)](https://www.npmjs.org/package/mergejson)
+[![NPM Downloads](https://img.shields.io/npm/dm/mergejson.svg?style=flat)](https://www.npmjs.org/package/mergejson)
+
 Recursively merge json documents in a new one.
 
 # Node.js Usage
