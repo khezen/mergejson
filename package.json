@@ -1,13 +1,14 @@
 {
   "name": "mergejson",
-  "version": "1.0.14",
+  "version": "1.0.16",
   "description": "Recursively merge json documents in a new one",
-  "keywords": ["merge", "json", "recursively", "recursively"],
+  "keywords": ["merge", "json"],
   "main": "mergejson.js",
   "scripts": {
     "start": "node mergejson.js",
     "test": "node ./test/test.js"
   },
+  "man": "./man.1",
   "bin":{
     "mergejson": "./cmd.js"
   },

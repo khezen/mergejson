@@ -1,0 +1,49 @@
+Example:
+
+one.json
+--------
+{
+    "1": "hello",
+    "4":{
+        "4.1": "jhon",
+        "4.2": "doe"
+    }
+}
+
+
+two.yml
+--------
+{
+    "2": "world",
+    "4":{
+        "4.1": "jhon",
+        "4.2": "lenon",
+        "4.3": "from two"
+    }
+} 
+
+three.yml
+--------
+{
+    "3": "!",
+    "4":{ 
+            "4.1": "jhon",
+            "4.2": "lennon",
+            "4.3": "from three"
+        }
+}
+ 
+
+
+mergeyaml $(cat one.yml) $(cat two.yml) $(cat three.yml)
+--------
+{
+    "1": "hello",
+    "2": "world",
+    "3": "!",
+    "4":{ 
+            "4.1": "jhon",
+            "4.2": "doe",
+            "4.3": "from two"
+        } 
+}
