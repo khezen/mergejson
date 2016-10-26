@@ -11,7 +11,7 @@ one.json
 }
 
 
-two.yml
+two.json
 --------
 {
     "2": "world",
@@ -22,7 +22,7 @@ two.yml
     }
 } 
 
-three.yml
+three.json
 --------
 {
     "3": "!",
@@ -35,7 +35,7 @@ three.yml
  
 
 
-mergeyaml $(cat one.yml) $(cat two.yml) $(cat three.yml)
+mergejson $(cat one.json) $(cat two.json) $(cat three.json)
 --------
 {
     "1": "hello",
