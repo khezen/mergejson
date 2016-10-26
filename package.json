@@ -1,6 +1,6 @@
 {
   "name": "mergejson",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Recursively merge json documents in a new one",
   "keywords": ["merge", "json"],
   "main": "mergejson.js",
@@ -8,7 +8,7 @@
     "start": "node mergejson.js",
     "test": "node ./test/test.js"
   },
-  "man": "man.1",
+  "man": "mergejson.1",
   "bin":{
     "mergejson": "./cmd.js"
   },
