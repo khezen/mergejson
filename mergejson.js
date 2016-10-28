@@ -27,7 +27,7 @@ function merge(dominant, recessive){
     }
     for (prop in recessive){
         if(recessive.hasOwnProperty(prop) && !dominant[prop]){
-            merged[prop] = deepcopy(recessive[prop]);
+            merged[prop] = recessive[prop];
         }
     }
     return merged;
