@@ -5,7 +5,7 @@ function handleInput(input){
      if(typeof input !== "object" && typeof input !== "string" ){
          throw new Error("arguments has to be strings or objects");
      }
-    if(typeof input == "string"){
+    if(typeof input === "string"){
         input = JSON.parse(input);
     }
     return input;
@@ -26,10 +26,8 @@ function merge(dominant, recessive){
         }
     }
     for (prop in recessive){
-        if(recessive.hasOwnProperty(prop)){
-            if(!dominant[prop]){
-                merged[prop] = deepcopy(recessive[prop]);
-            }
+        if(recessive.hasOwnProperty(prop) && !dominant[prop]){
+            merged[prop] = deepcopy(recessive[prop]);
         }
     }
     return merged;
