@@ -8,7 +8,7 @@ Recursively merge json documents in a new one.
 npm install mergejson --save
 ```
 
-```
+```javascript
 var mergejson = require('mergejson')
 
 var dominant = {
