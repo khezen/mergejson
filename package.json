@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Khezen/mergejson#readme",
   "dependencies": {
+    "combine-lists": "^1.0.1",
     "deepcopy": "^0.6.3"
   }
 }

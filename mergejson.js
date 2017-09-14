@@ -1,5 +1,6 @@
 "use strict";
-var deepcopy = require('deepcopy');
+var deepcopy = require('deepcopy'),
+    combineLists = require("combine-lists");
 
 function handleInput(input){
      if(typeof input !== "object" && typeof input !== "string" ){
@@ -16,20 +17,41 @@ function merge(dominant, recessive){
     recessive = handleInput(recessive);
     var merged = {};
     var prop = null;
-    for (prop in dominant){
-        if(dominant.hasOwnProperty(prop)){
-            if(recessive[prop] && dominant[prop] instanceof Object){
-                merged[prop] = merge(dominant[prop], recessive[prop]);
-            }else{
-                merged[prop] = dominant[prop];
+    if(dominant && Array.isArray(dominant))
+    {
+        if(recessive && Array.isArray(recessive))
+        {
+            merged = combineLists(dominant, recessive);
+        }
+        else
+        {
+            merged = dominant;
+        }
+    }
+    else if(!dominant && recessive && Array.isArray(recessive))
+    {
+        merged = recessive;
+    }
+    else
+    {
+        for (prop in dominant){
+            if(dominant.hasOwnProperty(prop)){
+                if(recessive[prop] && dominant[prop] instanceof Object){
+                    merged[prop] = merge(dominant[prop], recessive[prop]);
+                }else{
+                    merged[prop] = dominant[prop];
+                }
+            }
+        }
+
+        for (prop in recessive){
+            if(recessive.hasOwnProperty(prop) && !dominant[prop]){
+                merged[prop] = recessive[prop];
             }
         }
     }
-    for (prop in recessive){
-        if(recessive.hasOwnProperty(prop) && !dominant[prop]){
-            merged[prop] = recessive[prop];
-        }
-    }
+    
+    
     return merged;
 }
 
