@@ -1,6 +1,6 @@
 {
   "name": "mergejson",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "Recursively merge json documents in a new one",
   "keywords": [
     "merge",
