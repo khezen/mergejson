@@ -6,7 +6,8 @@ var one = {
         '4.1': 'jhon',
         '4.2': 'doe'
     },
-    arr: ["a", 2]
+    arr: ["a", 2],
+    obj_array: [{id: 'foo'}]
 };
 var two = {
     '2': 'world',
@@ -14,7 +15,8 @@ var two = {
         '4.1': 'jhon',
         '4.2': 'lennon',
         '4.3': 'from two'
-    }    
+    },
+    obj_array: [{id: 'bar'}]
 };
 var three = {
     '3': '!',

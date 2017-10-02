@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Khezen/mergejson#readme",
   "dependencies": {
-    "combine-lists": "^1.0.1",
+    "combine-lists": "https://github.com/jonathankeebler/combine-lists/tarball/master",
     "deepcopy": "^0.6.3"
   }
 }
