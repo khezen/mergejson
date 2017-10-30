@@ -28,5 +28,9 @@
   "dependencies": {
     "combine-lists": "https://github.com/jonathankeebler/combine-lists/tarball/master",
     "deepcopy": "^0.6.3"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "should": "^11.2.1"
   }
 }
