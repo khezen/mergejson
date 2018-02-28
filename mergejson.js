@@ -36,7 +36,11 @@ function merge(dominant, recessive){
     {
         for (prop in dominant){
             if(dominant.hasOwnProperty(prop)){
-                if(recessive.hasOwnProperty(prop) && dominant[prop] instanceof Object){
+                if(
+					recessive.hasOwnProperty(prop) 
+					&& dominant[prop] instanceof Object
+					&& ! ( dominant[prop] instanceof Date )
+				){
                     merged[prop] = merge(dominant[prop], recessive[prop]);
                 }else{
                     merged[prop] = dominant[prop];
