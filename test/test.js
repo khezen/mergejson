@@ -86,4 +86,44 @@ mergejson(one,three).should.eql({ '1': 'hello',
         third: false
     },
     arr: [ 'a', 2, 'b' ],
-    obj_array: [ { id: 'foo' } ] });
+	obj_array: [ { id: 'foo' } ] });
+	
+mergejson(
+	{
+		date: new Date(0)
+	},
+	{
+		date: new Date()
+	}).should.eql({
+		date: new Date(0)
+	});
+
+mergejson(
+	{
+		date: new Date(1)
+	},
+	{
+		date: new Date(0)
+	}).should.eql({
+		date: new Date(1)
+	});
+
+mergejson(
+	{
+		date: new Date(0)
+	},
+	{
+		date: null
+	}).should.eql({
+		date: new Date(0)
+	});
+
+mergejson(
+	{
+		date: null
+	},
+	{
+		date: Date(0)
+	}).should.eql({
+		date: null
+	});
