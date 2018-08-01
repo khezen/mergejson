@@ -127,3 +127,32 @@ mergejson(
 	}).should.eql({
 		date: null
 	});
+
+mergejson(
+	{
+		name: 'Anna'
+	},
+	{
+		name: {
+			first:'Anna',
+			last:'Smith'
+		}
+	}).should.eql({
+	name: 'Anna'
+});
+
+mergejson(
+	{
+		name: {
+			first:'Anna',
+			last:'Smith'
+		}
+	},
+	{
+		name: 'Anna'
+	}).should.eql({
+	name: {
+		first:'Anna',
+		last:'Smith'
+	}
+});
