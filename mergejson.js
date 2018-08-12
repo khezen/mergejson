@@ -1,6 +1,6 @@
 "use strict";
 var deepcopy = require('deepcopy'),
-    combineLists = require("combine-lists");
+    combineLists = require("@compassdigital/combine-lists");
 
 function handleInput(input){
      if(typeof input !== "object" && typeof input !== "string" ){
