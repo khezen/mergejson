@@ -41,118 +41,157 @@ var three = {
     }
 };
 
-mergejson(one, two, three).should.eql({ '1': 'hello',
-    '2': 'world',
-    '3': '!',
-    '4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from two' },
-    is: {
-        foo: false,
-        bar: false,
-        third: false
-    },
-    arr: [ 'a', 2, 'b' ],
-    obj_array: [ { id: 'bar' }, { id: 'foo' } ] });
+describe("Basic tests", function()
+{
+	it("should pass legacy tests", function(done)
+	{
+		mergejson(one, two, three).should.eql({ '1': 'hello',
+			'2': 'world',
+			'3': '!',
+			'4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from two' },
+			is: {
+				foo: false,
+				bar: false,
+				third: false
+			},
+			arr: [ 'a', 2, 'b' ],
+			obj_array: [ { id: 'bar' }, { id: 'foo' } ] });
 
 
-mergejson([one, two, three]).should.eql({ '1': 'hello',
-    '2': 'world',
-    '3': '!',
-    '4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from two' },
-    is: {
-        foo: false,
-        bar: false,
-        third: false
-    },
-    arr: [ 'a', 2, 'b' ],
-    obj_array: [ { id: 'bar' }, { id: 'foo' } ] });
+		mergejson([one, two, three]).should.eql({ '1': 'hello',
+			'2': 'world',
+			'3': '!',
+			'4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from two' },
+			is: {
+				foo: false,
+				bar: false,
+				third: false
+			},
+			arr: [ 'a', 2, 'b' ],
+			obj_array: [ { id: 'bar' }, { id: 'foo' } ] });
 
-mergejson(one,two).should.eql({ '1': 'hello',
-    '2': 'world',
-    '4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from two' },
-    arr: [ 'a', 2 ],
-    is: {
-        foo: false,
-        bar: false
-    },
-    obj_array: [ { id: 'bar' }, { id: 'foo' } ] });
+		mergejson(one,two).should.eql({ '1': 'hello',
+			'2': 'world',
+			'4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from two' },
+			arr: [ 'a', 2 ],
+			is: {
+				foo: false,
+				bar: false
+			},
+			obj_array: [ { id: 'bar' }, { id: 'foo' } ] });
 
 
-mergejson(one,three).should.eql({ '1': 'hello',
-    '3': '!',
-    '4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from three' },
-    is: {
-        foo: false,
-        bar: false,
-        third: false
-    },
-    arr: [ 'a', 2, 'b' ],
-	obj_array: [ { id: 'foo' } ] });
+		mergejson(one,three).should.eql({ '1': 'hello',
+			'3': '!',
+			'4': { '4.1': 'jhon', '4.2': 'doe', '4.3': 'from three' },
+			is: {
+				foo: false,
+				bar: false,
+				third: false
+			},
+			arr: [ 'a', 2, 'b' ],
+			obj_array: [ { id: 'foo' } ] });
+			
+		mergejson(
+			{
+				date: new Date(0)
+			},
+			{
+				date: new Date()
+			}).should.eql({
+				date: new Date(0)
+			});
+
+		mergejson(
+			{
+				date: new Date(1)
+			},
+			{
+				date: new Date(0)
+			}).should.eql({
+				date: new Date(1)
+			});
+
+		mergejson(
+			{
+				date: new Date(0)
+			},
+			{
+				date: null
+			}).should.eql({
+				date: new Date(0)
+			});
+
+		mergejson(
+			{
+				date: null
+			},
+			{
+				date: Date(0)
+			}).should.eql({
+				date: null
+			});
+
+		mergejson(
+			{
+				name: 'Anna'
+			},
+			{
+				name: {
+					first:'Anna',
+					last:'Smith'
+				}
+			}).should.eql({
+			name: 'Anna'
+		});
+
+		mergejson(
+			{
+				name: {
+					first:'Anna',
+					last:'Smith'
+				}
+			},
+			{
+				name: 'Anna'
+			}).should.eql({
+			name: {
+				first:'Anna',
+				last:'Smith'
+			}
+		});
+
+		done();
+	});
+
+	it("should merge a large file to empty object very quickly", function(done)
+	{
+		let large_json = require("./data/large_json.json");
+		
+		let start = new Date();
 	
-mergejson(
-	{
-		date: new Date(0)
-	},
-	{
-		date: new Date()
-	}).should.eql({
-		date: new Date(0)
+		mergejson({}, large_json);
+	
+		let end = new Date();
+
+		(end - start).should.be.below(200);
+
+		done();
 	});
 
-mergejson(
+	it("should merge two large files in <1s", function(done)
 	{
-		date: new Date(1)
-	},
-	{
-		date: new Date(0)
-	}).should.eql({
-		date: new Date(1)
-	});
+		let large_json = require("./data/large_json.json");
+		
+		let start = new Date();
+	
+		mergejson(large_json, large_json);
+	
+		let end = new Date();
 
-mergejson(
-	{
-		date: new Date(0)
-	},
-	{
-		date: null
-	}).should.eql({
-		date: new Date(0)
-	});
+		(end - start).should.be.below(1000);
 
-mergejson(
-	{
-		date: null
-	},
-	{
-		date: Date(0)
-	}).should.eql({
-		date: null
+		done();
 	});
-
-mergejson(
-	{
-		name: 'Anna'
-	},
-	{
-		name: {
-			first:'Anna',
-			last:'Smith'
-		}
-	}).should.eql({
-	name: 'Anna'
 });
 
-mergejson(
-	{
-		name: {
-			first:'Anna',
-			last:'Smith'
-		}
-	},
-	{
-		name: 'Anna'
-	}).should.eql({
-	name: {
-		first:'Anna',
-		last:'Smith'
-	}
-});

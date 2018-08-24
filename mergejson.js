@@ -1,6 +1,5 @@
 "use strict";
-var deepcopy = require('deepcopy'),
-    combineLists = require("@compassdigital/combine-lists");
+const combineLists = require("@compassdigital/combine-lists");
 
 function handleInput(input){
      if(typeof input !== "object" && typeof input !== "string" ){
@@ -65,9 +64,9 @@ function mergejson(){
     if(args[0] instanceof Array){
         args = args[0];
     }
-    var merged = deepcopy(args[0]);
+    var merged = Object.assign({}, args[0]);
     for (var i=1; i < args.length; i++){
-        var recessive = deepcopy(args[i]);
+        var recessive = Object.assign({}, args[i]);
         merged = merge(merged, recessive);
     }
     return merged;
