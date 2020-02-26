@@ -193,5 +193,32 @@ describe("Basic tests", function()
 
 		done();
 	});
+
+	it("should merge two objects, not using combine-lists", function(done)
+	{
+		const object_one = {
+			meta: [
+				"one", "two", "three"
+			],
+			prop2: "something",
+			prop1: {
+				something: "two"
+			}
+		};
+
+		const object_two = {
+			meta: [
+				"two",
+			],
+			prop1: {
+				something: "one"
+			}
+		};
+
+		mergejson(object_two, object_one, true).should.eql({"meta":["two"],"prop1":{"something":"one"},"prop2":"something"});
+		mergejson(object_two, object_one).should.eql({"meta":["one", "two", "three"],"prop1":{"something":"one"},"prop2":"something"});
+
+		done();
+	});
 });
 
