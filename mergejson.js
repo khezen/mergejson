@@ -11,7 +11,7 @@ function handleInput(input){
     return input;
 }
 
-function merge(dominant, recessive){
+function merge(dominant, recessive, array_persist = false){
     dominant = handleInput(dominant);
     recessive = handleInput(recessive);
     var merged = {};
@@ -20,7 +20,7 @@ function merge(dominant, recessive){
     {
         if(recessive && Array.isArray(recessive))
         {
-            merged = combineLists(dominant, recessive);
+            merged = (array_persist) ? dominant : combineLists(dominant, recessive);
         }
         else
         {
@@ -41,7 +41,7 @@ function merge(dominant, recessive){
                     && ! ( dominant[prop] instanceof Date)
 	                && typeof dominant[prop] === typeof recessive[prop]
 				){
-                    merged[prop] = merge(dominant[prop], recessive[prop]);
+                    merged[prop] = merge(dominant[prop], recessive[prop], array_persist);
                 }else{
                     merged[prop] = dominant[prop];
                 }
@@ -64,10 +64,18 @@ function mergejson(){
     if(args[0] instanceof Array){
         args = args[0];
     }
+
+    // if last argument passed is boolean, replace array values with dominant data
+    var array_persist = false;
+    if (typeof args[args.length - 1] === "boolean"){
+        delete args[args.length - 1];
+        array_persist = true;
+    }
+
     var merged = Object.assign({}, args[0]);
     for (var i=1; i < args.length; i++){
         var recessive = Object.assign({}, args[i]);
-        merged = merge(merged, recessive);
+        merged = merge(merged, recessive, array_persist);
     }
     return merged;
 }
